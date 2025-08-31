@@ -321,6 +321,6 @@ input[type="password"]:focus {
   text-align: center;
 }
 
-.alert-success { background: #d4edda; color: #155724; }
-.alert-danger  { background: #f8d7da; color: #721c24; }
-.alert-info    { background: #d1ecf1; color: #0c5460; }
+.alert-success { background: #A8C1A5; color: #3E3F29; }
+.alert-danger  { background: #D89B5A; color: #3E3F29; }
+.alert-info    { background: #D7C7A7; color: #3E3F29; }
