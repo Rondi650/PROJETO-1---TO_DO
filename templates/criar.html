@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Lista Pessoal</h1>
-    </header>
+{% extends "template.html" %}
+{% block conteudo %}   
     <div class="container">
         <h1 class="page-header">{{titulo}}</h1>
         <div class="form-container">
@@ -25,5 +15,4 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

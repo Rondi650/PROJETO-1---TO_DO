@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, url_for, redirect, session
-from conexao_bd import db, ToDo, init_app, Usuarios
+from flask import Flask, render_template, request, url_for, redirect, session, flash
+from conexao_bd import db, ToDo, iniciar_BD, Usuarios
 
 app = Flask(__name__)
 app.secret_key = 'Rondi'
-init_app(app)
+iniciar_BD(app)
 
 with app.app_context():
     db.create_all()
@@ -28,6 +28,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.clear()
+    flash('Você saiu do sistema.', 'info')
     return redirect(url_for('login'))
 
 @app.route('/autenticar', methods=['POST'])
@@ -35,10 +36,13 @@ def autenticar():
     email = request.form['email']
     senha = request.form['senha']
     usuario = Usuarios.query.filter_by(email=email, senha=senha).first()
+    print(usuario)
     if usuario:
         session['usuario_id'] = usuario.id
+        flash('Login realizado com sucesso!', 'success')
         return redirect(url_for('index'))
     else:
+        flash('E-mail ou senha incorretos.', 'danger')
         return redirect(url_for('login'))
 
 @app.route('/criar_tarefa', methods = ['POST'])
@@ -49,5 +53,18 @@ def criar_tarefa():
     db.session.commit()
     return redirect(url_for('index'))
 
+'''APENAS UM TESTE, NAO MUDA NADA NO APP'''
+with app.app_context():
+    lista_usuario = Usuarios.query.all()
+    nova_lista = {}
+    for usuario in lista_usuario:
+        ativo = usuario.status  
+        dict_usuarios = {'nome': usuario.nome, 'email': usuario.email, 'senha':usuario.senha}
+        if ativo not in nova_lista:
+            nova_lista[ativo] = []
+        nova_lista[ativo].append(dict_usuarios)
+    print(nova_lista)
+  
 if __name__ == "__main__":
     app.run(debug=True)
+    

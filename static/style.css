@@ -32,6 +32,8 @@
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
   background-color: var(--color-primary-dark);
   padding: 1rem 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -279,3 +281,46 @@ input[type="password"]:focus {
 .login-form h1:before {
   content: "🔒 ";
 }
+
+/* Estilo para o botão de logout */
+.btn-logout {
+  background-color: transparent;
+  border: 1.5px solid var(--color-white);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-logout:active {
+  transform: translateY(0);
+}
+
+/* Adicionar ícone ao botão */
+.btn-logout:before {
+  content: "↪ ";
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.alert {
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.flash-messages {
+  text-align: center;
+}
+
+.alert-success { background: #d4edda; color: #155724; }
+.alert-danger  { background: #f8d7da; color: #721c24; }
+.alert-info    { background: #d1ecf1; color: #0c5460; }

@@ -29,9 +29,16 @@ class Usuarios(db.Model):
     email = db.Column(db.String(100), nullable = False, unique = True)
     senha = db.Column(db.String(100), nullable = False)
     data_criacao = db.Column(db.DateTime, default=datetime.utcnow)
-    ativo = db.Column(db.Boolean, default=True)                 
+    ativo = db.Column(db.Boolean, default=True)    
+    
+    @property
+    def status(self):
+        return 'Ativo' if self.ativo else 'Desativado'
+    
+    def __repr__(self):
+        return f'Nome: {self.nome} | E-mail: {self.email} | Senha: {self.senha} | Status: {self.status}'             
                
-def init_app(app):
+def iniciar_BD(app):
     connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=localhost;DATABASE=Todo;Trusted_Connection=yes;"
     connection_url = URL.create(
         "mssql+pyodbc", query={"odbc_connect": connection_string}
