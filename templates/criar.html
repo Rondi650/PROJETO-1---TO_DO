@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-
-      <div class="page-header">
-         <h1>{{titulo}}</h1>
-      </div>
-
-    <form action="{{ url_for('criar_tarefa') }}" method="post"> <!-- direciona para o app.route -->
-        <fieldset>
-            <div class="form-group">
-                <label for="categoria">Tarefa</label>
-                <input type="text" id="tarefa" name="tarefa" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
-        </fieldset>
-    </form>
-
+    <div class="container">
+        <h1 class="page-header">{{titulo}}</h1>
+        <div class="form-container">
+            <form action="{{ url_for('criar_tarefa') }}" method="post"> <!-- direciona para o app.route -->
+                <div class="form-group">
+                    <label for="categoria">Tarefa</label>
+                    <input type="text" id="tarefa" name="tarefa">
+                </div>
+                <div class="agrupar_btn">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="{{ url_for('index') }}" class="btn">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
-
 </html>
