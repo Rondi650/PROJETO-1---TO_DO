@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
-from conexao_bd import db, ToDo, init_app
+from conexao_bd import db, ToDo, init_app, Usuarios
 
 app = Flask(__name__)
 init_app(app)

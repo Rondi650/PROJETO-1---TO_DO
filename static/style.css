@@ -21,7 +21,7 @@
   
   /* Dimensões */
   --border-radius: 6px;
-  --container-width: 900px;
+  --container-width: 75%;
 }
 
 /* Reset e estilos base */
@@ -154,7 +154,7 @@ table {
 th {
   background-color: var(--color-primary);
   color: var(--color-white);
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   padding: 12px 15px;
   text-transform: uppercase;
@@ -182,10 +182,12 @@ tr:hover {
 .status-feito {
   color: var(--color-completed);
   font-weight: bold;
+  text-align: center;
 }
 
 .status-pendente {
   color: var(--color-pending);
+  text-align: center;
 }
 
 /* Formulários */
@@ -194,7 +196,7 @@ tr:hover {
   padding: 25px;
   border-radius: var(--border-radius);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
 }
 

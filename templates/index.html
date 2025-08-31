@@ -26,14 +26,11 @@
                 {% for tarefa in tarefas %}
                 <tr>
                     <td>{{ tarefa.tarefa }}</td>
-                    <td class="{% if tarefa.status %}status-feito{% else %}status-pendente{% endif %}">{{ tarefa.feito
-                        }}</td>
+                    <td class="{% if tarefa.status %}status-feito{% else %}status-pendente{% endif %}">{{ tarefa.feito }}</td>
                 </tr>
                 {% endfor %}
-
             </tbody>
         </table>
     </div>
 </body>
-
 </html>

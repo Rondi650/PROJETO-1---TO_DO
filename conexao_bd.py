@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.engine import URL
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -19,6 +20,16 @@ class ToDo(db.Model):
         
     def reabrir_tarefa(self):
         self.status = False
+        
+class Usuarios(db.Model):
+    __tablename__ = 'usuarios'
+    
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    nome = db.Column(db.String(100), nullable = False)
+    email = db.Column(db.String(100), nullable = False, unique = True)
+    senha = db.Column(db.String(100), nullable = False)
+    data_criacao = db.Column(db.DateTime, default=datetime.utcnow)
+    ativo = db.Column(db.Boolean, default=True)                 
                
 def init_app(app):
     connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=localhost;DATABASE=Todo;Trusted_Connection=yes;"
