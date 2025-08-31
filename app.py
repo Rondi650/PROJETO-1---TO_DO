@@ -10,16 +10,25 @@ with app.app_context():
 
 @app.route('/')
 def index():
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))    
     tarefas = ToDo.query.all()
     return render_template('index.html', titulo = 'Lista de Tarefas', tarefas = tarefas)
 
 @app.route('/criar')
 def criar():
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
     return render_template('criar.html', titulo='Criar Nova Tarefa')
 
 @app.route('/login')
 def login():
     return render_template('login.html', titulo = 'Login')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
