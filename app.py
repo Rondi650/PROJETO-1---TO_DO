@@ -52,18 +52,6 @@ def criar_tarefa():
     db.session.add(nova_tarefa)
     db.session.commit()
     return redirect(url_for('index'))
-
-'''APENAS UM TESTE, NAO MUDA NADA NO APP'''
-with app.app_context():
-    lista_usuario = Usuarios.query.all()
-    nova_lista = {}
-    for usuario in lista_usuario:
-        ativo = usuario.status  
-        dict_usuarios = {'nome': usuario.nome, 'email': usuario.email, 'senha':usuario.senha}
-        if ativo not in nova_lista:
-            nova_lista[ativo] = []
-        nova_lista[ativo].append(dict_usuarios)
-    print(nova_lista)
   
 if __name__ == "__main__":
     app.run(debug=True)

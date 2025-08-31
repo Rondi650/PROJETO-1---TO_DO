@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal</title>
+    <title>ToDo</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
+    {% block header %}
     <header>
         <h1>Lista Pessoal</h1>
         <a href="/logout" class="btn btn-logout">Logout</a>
     </header>
+    {% endblock %}
+
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         <div class="flash-messages">
@@ -22,8 +25,8 @@
         </div>
       {% endif %}
     {% endwith %}
-    
-{% block conteudo %} {% endblock %}
+
+ {% block conteudo %} {% endblock %} <!--E como se as paginas estivessem aqui dentro -->
 
 </body>
 </html>

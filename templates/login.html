@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "template.html" %}
+{% block header %}
     <header>
-        <h1>Lista Pessoal</h1>
+        <h1>Login do Sistema</h1>
     </header>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash-messages">
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">{{ message }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}    
-    
+{% endblock %}
+{% block conteudo %}
     <div class="container">
         <h1 class="page-header">{{titulo}}</h1>
         
@@ -41,5 +26,4 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

@@ -33,10 +33,7 @@ class Usuarios(db.Model):
     
     @property
     def status(self):
-        return 'Ativo' if self.ativo else 'Desativado'
-    
-    def __repr__(self):
-        return f'Nome: {self.nome} | E-mail: {self.email} | Senha: {self.senha} | Status: {self.status}'             
+        return 'Ativo' if self.ativo else 'Desativado'       
                
 def iniciar_BD(app):
     connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=localhost;DATABASE=Todo;Trusted_Connection=yes;"
