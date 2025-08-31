@@ -9,7 +9,6 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    # busca do banco
     tarefas = ToDo.query.all()
     return render_template('index.html', titulo = 'Lista de Tarefas', tarefas = tarefas)
 
@@ -20,11 +19,9 @@ def criar():
 @app.route('/criar_tarefa', methods = ['POST'])
 def criar_tarefa():
     tarefa = request.form['tarefa']
-
     nova_tarefa = ToDo(tarefa = tarefa)
     db.session.add(nova_tarefa)
     db.session.commit()
-    
     return redirect(url_for('index'))
 
 if __name__ == "__main__":

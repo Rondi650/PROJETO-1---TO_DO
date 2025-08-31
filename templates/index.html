@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Principal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+    <header>
+        <h1>Lista Pessoal</h1>
+    </header>
     <div class="container">
         <h1 class="page-header">{{titulo}}</h1>
         <a href="{{ url_for('criar') }}" class="btn create-btn">Nova Tarefa</a>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>TAREFA</th>
                     <th>STATUS</th>
                 </tr>
@@ -21,9 +25,9 @@
             <tbody>
                 {% for tarefa in tarefas %}
                 <tr>
-                    <td>{{ tarefa.id }}</td>
                     <td>{{ tarefa.tarefa }}</td>
-                    <td class="{% if tarefa.status %}status-feito{% else %}status-pendente{% endif %}">{{ tarefa.feito }}</td>
+                    <td class="{% if tarefa.status %}status-feito{% else %}status-pendente{% endif %}">{{ tarefa.feito
+                        }}</td>
                 </tr>
                 {% endfor %}
 
@@ -31,4 +35,5 @@
         </table>
     </div>
 </body>
+
 </html>
