@@ -36,6 +36,7 @@ def autenticar():
     email = request.form['email']
     senha = request.form['senha']
     usuario = Usuarios.query.filter_by(email=email, senha=senha).first()
+    print(usuario)
     if usuario:
         session['usuario_id'] = usuario.id
         flash('Login realizado com sucesso!', 'success')
