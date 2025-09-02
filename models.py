@@ -1,8 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.engine import URL
+from database import db
 from datetime import datetime
-
-db = SQLAlchemy()
 
 class ToDo(db.Model):
     __tablename__ = 'ListaTarefas'
@@ -33,14 +30,4 @@ class Usuarios(db.Model):
     
     @property
     def status(self):
-        return 'Ativo' if self.ativo else 'Desativado'       
-               
-def iniciar_BD(app):
-    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=localhost;DATABASE=Todo;Trusted_Connection=yes;"
-    connection_url = URL.create(
-        "mssql+pyodbc", query={"odbc_connect": connection_string}
-    )
-    
-    app.config['SQLALCHEMY_DATABASE_URI'] = connection_url
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
+        return 'Ativo' if self.ativo else 'Desativado'     
