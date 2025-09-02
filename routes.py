@@ -29,6 +29,15 @@ def alternar(id):
         db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/deletar <int:id>')
+def deletar(id):
+    tarefa = ToDo.query.filter_by(id=id).first()
+    if tarefa:
+        db.session.delete(tarefa)
+        db.session.commit()
+        flash('Tarefa deletada com sucesso', 'info')
+    return redirect(url_for('index'))
+    
 @app.route('/logout')
 def logout():
     session.clear()
