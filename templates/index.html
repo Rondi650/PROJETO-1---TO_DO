@@ -8,13 +8,15 @@
                 <tr>
                     <th>TAREFA</th>
                     <th>STATUS</th>
-                </tr>
+                    <th>MUDAR STATUS</th>
+                </tr>   
             </thead>
             <tbody>
                 {% for tarefa in tarefas %}
                 <tr>
                     <td>{{ tarefa.tarefa }}</td>
                     <td class="{% if tarefa.status %}status-feito{% else %}status-pendente{% endif %}">{{ tarefa.feito }}</td>
+                    <td class="alinhar"><a href="{{url_for('alternar', id=tarefa.id)}}" class="btn btn-primary">Alternar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -12,12 +12,9 @@ class ToDo(db.Model):
     def feito(self):
         return 'Feito' if self.status else 'Nao Feito'
     
-    def concluir_tarefa(self):
-        self.status = True
-        
-    def reabrir_tarefa(self):
-        self.status = False
-        
+    def alternar_status(self):
+        self.status = not self.status
+                
 class Usuarios(db.Model):
     __tablename__ = 'usuarios'
     

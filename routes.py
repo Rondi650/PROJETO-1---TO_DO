@@ -20,6 +20,15 @@ def criar():
 def login():
     return render_template('login.html', titulo = 'Login')
 
+@app.route('/alternar <int:id>')
+def alternar(id):
+    tarefa = ToDo.query.filter_by(id=id).first()
+    if tarefa:
+        tarefa.alternar_status()
+        db.session.add(tarefa)
+        db.session.commit()
+    return redirect(url_for('index'))
+
 @app.route('/logout')
 def logout():
     session.clear()
@@ -46,4 +55,5 @@ def criar_tarefa():
     nova_tarefa = ToDo(tarefa = tarefa)
     db.session.add(nova_tarefa)
     db.session.commit()
+    flash('Tarefa cadastrada com sucesso!', 'success')
     return redirect(url_for('index'))
