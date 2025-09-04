@@ -4,7 +4,10 @@ from database import db
 SECRET_KEY = 'Rondi'
 
 def iniciar_BD(app):
-    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=localhost;DATABASE=Todo;Trusted_Connection=yes;"
+    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};\
+                        SERVER=localhost;\
+                        DATABASE=Todo;\
+                        Trusted_Connection=yes;"
     connection_url = URL.create(
         "mssql+pyodbc", query={"odbc_connect": connection_string}
     )

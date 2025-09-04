@@ -148,7 +148,7 @@ a.btn {
   display: flex;
   gap: 10px;
   margin-top: 20px;
-  justify-content: flex-start; /* alinha botões à esquerda */
+  justify-content: space-between;
 }
 
 .agrupar_btn .btn {
@@ -229,6 +229,7 @@ tr:hover {
 
 /* Formulários */
 .form-container {
+  width: 70%;
   background-color: var(--color-white);
   padding: 25px;
   border-radius: var(--border-radius);
@@ -290,6 +291,7 @@ input[type="text"]:focus {
 
 /* Estilo para campos de formulário adicionais */
 input[type="email"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 12px 15px;
@@ -359,3 +361,4 @@ input[type="password"]:focus {
 .alert-success { background: #A8C1A5; color: #3E3F29; }
 .alert-danger  { background: #D89B5A; color: #3E3F29; }
 .alert-info    { background: #D7C7A7; color: #3E3F29; }
+
