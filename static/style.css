@@ -362,3 +362,8 @@ input[type="password"]:focus {
 .alert-danger  { background: #D89B5A; color: #3E3F29; }
 .alert-info    { background: #D7C7A7; color: #3E3F29; }
 
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}

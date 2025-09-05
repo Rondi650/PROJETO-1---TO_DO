@@ -1,8 +1,8 @@
 from flask import render_template, request, url_for, redirect, session, flash
 from database import db
 from app import app
-from models import Usuarios, ToDo
-from forms import FormularioUsuario, FormularioTodo
+from models import ToDo
+from forms import FormularioTodo
 
 @app.route('/')
 def index():
@@ -16,10 +16,6 @@ def criar():
     if 'usuario_id' not in session:
         return redirect(url_for('login'))
     return render_template('criar.html', titulo='Criar Nova Tarefa')
-
-@app.route('/cadastrar')
-def cadastrar():
-    return render_template('cadastrar.html', titulo = 'Cadastro' )
 
 @app.route('/alternar/<int:id>')
 def alternar(id):
