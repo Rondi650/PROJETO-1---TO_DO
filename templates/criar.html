@@ -1,18 +1,18 @@
 {% extends "template.html" %}
-{% block conteudo %}   
-    <div class="container">
-        <h1 class="page-header">{{titulo}}</h1>
-        <div class="form-container">
-            <form action="{{ url_for('criar_tarefa') }}" method="post"> <!-- direciona para o app.route -->
-                <div class="form-group">
-                    <label for="categoria">Tarefa</label>
-                    <input type="text" id="tarefa" name="tarefa">
-                </div>
-                <div class="agrupar_btn">
+{% block conteudo %}
+<div class="container">
+    <h1 class="page-header">{{titulo}}</h1>
+    <div class="form-container">
+        <form action="{{ url_for('criar_tarefa') }}" method="post"> <!-- direciona para o app.route -->
+            <div class="form-group">
+                <label for="categoria">Tarefa</label>
+                <input type="text" id="tarefa" name="tarefa">
+            </div>
+            <div class="agrupar_btn">
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <a href="{{ url_for('index') }}" class="btn">Cancelar</a>
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}

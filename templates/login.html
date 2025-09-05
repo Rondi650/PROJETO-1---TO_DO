@@ -1,30 +1,29 @@
 {% extends "template.html" %}
 {% block header %}
-    <header>
-        <h1>Lista Pessoal</h1>
-    </header>
+<header>
+    <h1>Lista Pessoal</h1>
+</header>
 {% endblock %}
 {% block conteudo %}
-    <div class="container">
-        <h1 class="page-header">{{titulo}}</h1>
-        
-        <div class="form-container login-form">
-            <form action="{{url_for('autenticar')}}" method="post">
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha">
-                </div>
-                
-                <div class="agrupar_btn">
-                    <button type="submit" class="btn btn-success">Entrar</button>
-                    <a href="/cadastrar" class="btn">Cadastrar</a>
-                </div>
-            </form>
-        </div>
+<div class="container">
+    <h1 class="page-header">{{titulo}}</h1>
+
+    <div class="form-container login-form">
+        <form action="{{url_for('autenticar')}}" method="post">
+            {{form.csrf_token()}}
+            <div class="form-group">
+                {{ form.email.label()}}
+                {{ form.email() }}
+            </div>
+            <div class="form-group">
+                {{ form.senha.label()}}
+                {{ form.senha() }}
+            </div>
+            <div class="agrupar_btn">
+                {{ form.salvar(class="btn btn-success") }}
+                <a href="/cadastrar" class="btn">Cadastrar</a>
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}

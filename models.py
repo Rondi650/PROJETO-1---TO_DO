@@ -1,5 +1,6 @@
 from database import db
 from datetime import datetime
+from flask_bcrypt import generate_password_hash
 
 class ToDo(db.Model):
     __tablename__ = 'ListaTarefas'
@@ -28,3 +29,6 @@ class Usuarios(db.Model):
     @property
     def status(self):
         return 'Ativo' if self.ativo else 'Desativado'     
+    
+    def set_senha(self, senha):
+        self.senha = generate_password_hash(senha).decode('utf-8')
