@@ -22,6 +22,9 @@ def criar():
 
 @app.route('/alternar/<int:id>')
 def alternar(id):
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
+    
     tarefa = ToDo.query.filter_by(id=id).first()
     if tarefa:
         tarefa.alternar_status()
@@ -32,6 +35,9 @@ def alternar(id):
 
 @app.route('/deletar/<int:id>')
 def deletar(id):
+    if 'usuario_id' not in session:
+        return redirect(url_for('login'))
+    
     tarefa = ToDo.query.filter_by(id=id).first()
     if tarefa:
         db.session.delete(tarefa)

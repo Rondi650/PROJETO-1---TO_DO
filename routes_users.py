@@ -30,7 +30,7 @@ def cadastrar_usuario():
         db.session.add(novo_usuario)
         db.session.commit()
 
-        flash(f'{novo_usuario.nome} cadastrado com sucesso!', 'success')
+        flash('Usuario cadastrado com sucesso!', 'success')
         return redirect(url_for('login'))
 
     return render_template('cadastrar.html', titulo='Cadastro', form=form)
