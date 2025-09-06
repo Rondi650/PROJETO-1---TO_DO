@@ -3,7 +3,7 @@ from wtforms import StringField, SubmitField, PasswordField, EmailField, validat
 from wtforms.validators import DataRequired, length
 
 class FormularioTodo(FlaskForm):
-    tarefa = StringField('Nome do Jogo', validators=[DataRequired(), length(min=10, max=200)])
+    tarefa = StringField('Nova Tarefa:', validators=[DataRequired(), length(min=10, max=200)])
     salvar = SubmitField('Salvar')
     
 class FormularioUsuario(FlaskForm):

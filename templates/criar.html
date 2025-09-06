@@ -4,12 +4,13 @@
     <h1 class="page-header">{{titulo}}</h1>
     <div class="form-container">
         <form action="{{ url_for('criar_tarefa') }}" method="post"> <!-- direciona para o app.route -->
+            {{form.csrf_token()}}
             <div class="form-group">
-                <label for="categoria">Tarefa</label>
-                <input type="text" id="tarefa" name="tarefa">
+                {{ form.tarefa.label()}}
+                {{ form.tarefa() }}
             </div>
             <div class="agrupar_btn">
-                <button type="submit" class="btn btn-success">Salvar</button>
+                {{ form.salvar(class="btn btn-success") }}
                 <a href="{{ url_for('index') }}" class="btn">Cancelar</a>
             </div>
         </form>

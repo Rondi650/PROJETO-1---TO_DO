@@ -5,7 +5,6 @@ from models import Usuarios
 from forms import FormularioUsuario
 from flask_bcrypt import check_password_hash
 
-
 @app.route('/login')
 def login():
     form = FormularioUsuario()
@@ -42,7 +41,6 @@ def autenticar():
     email = form.email.data
     usuario = Usuarios.query.filter_by(email=email).first()
     senha = check_password_hash(usuario.senha, form.senha.data)
-    
     if usuario and senha:
         session['usuario_id'] = usuario.id
         flash(f'{usuario.nome} logado com sucesso!', 'success')
