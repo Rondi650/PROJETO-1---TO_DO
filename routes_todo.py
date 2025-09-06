@@ -12,7 +12,6 @@ def index():
     tarefas = ToDo.query.all()
     return render_template('index.html', titulo='Lista de Tarefas', tarefas=tarefas)
 
-
 @app.route('/criar')
 def criar():
     if 'usuario_id' not in session:
@@ -20,7 +19,6 @@ def criar():
 
     form = FormularioTodo()
     return render_template('criar.html', titulo='Criar Nova Tarefa', form=form)
-
 
 @app.route('/alternar/<int:id>')
 def alternar(id):
@@ -32,7 +30,6 @@ def alternar(id):
 
     return redirect(url_for('index'))
 
-
 @app.route('/deletar/<int:id>')
 def deletar(id):
     tarefa = ToDo.query.filter_by(id=id).first()
@@ -42,7 +39,6 @@ def deletar(id):
         flash('Tarefa deletada com sucesso', 'info')
 
     return redirect(url_for('index'))
-
 
 @app.route('/criar_tarefa', methods=['POST'])
 def criar_tarefa():
