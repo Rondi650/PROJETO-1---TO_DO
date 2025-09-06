@@ -19,20 +19,26 @@ def cadastrar():
 def cadastrar_usuario():
     form = FormularioUsuario(request.form)
 
-    if form.validate_on_submit():
-        nome = form.nome.data
-        email = form.email.data
-        senha = form.senha.data
+    try:
+        if form.validate_on_submit():
+            nome = form.nome.data
+            email = form.email.data
+            senha = form.senha.data
 
-        novo_usuario = Usuarios(nome=nome, email=email)
-        novo_usuario.set_senha(senha)
+            novo_usuario = Usuarios(nome=nome, email=email)
+            novo_usuario.set_senha(senha)
 
-        db.session.add(novo_usuario)
-        db.session.commit()
+            db.session.add(novo_usuario)
+            db.session.commit()
 
-        flash('Usuario cadastrado com sucesso!', 'success')
-        return redirect(url_for('login'))
-
+            flash('Usuario cadastrado com sucesso!', 'success')
+            return redirect(url_for('login'))
+    except Exception as e:
+        db.session.rollback()
+        flash('E-mail ja cadastrado no banco de dados', 'danger')
+        print(f'Erro {e}')
+        return render_template('cadastrar.html', titulo = 'Cadastro', form=form)
+        
     return render_template('cadastrar.html', titulo='Cadastro', form=form)
 
 @app.route('/autenticar', methods=['POST'])
