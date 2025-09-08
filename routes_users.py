@@ -12,6 +12,7 @@ def login():
 
 @app.route('/cadastrar')
 def cadastrar():
+    
     form = FormularioUsuario()
     return render_template('cadastrar.html', titulo = 'Cadastro', form=form )
 
@@ -43,17 +44,23 @@ def cadastrar_usuario():
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
-    form = FormularioUsuario(request.form)
-    email = form.email.data
-    usuario = Usuarios.query.filter_by(email=email).first()
-    senha = check_password_hash(usuario.senha, form.senha.data)
-    if usuario and senha:
-        session['usuario_id'] = usuario.id
-        flash(f'{usuario.nome} logado com sucesso!', 'success')
-        return redirect(url_for('index'))
-    else:
-        flash('E-mail ou senha incorretos.', 'danger')
-        return redirect(url_for('login'))
+    try:
+        form = FormularioUsuario(request.form)
+        email = form.email.data
+        usuario = Usuarios.query.filter_by(email=email).first()
+        senha = check_password_hash(usuario.senha, form.senha.data)
+        if usuario and senha:
+            session['usuario_id'] = usuario.id
+            flash(f'{usuario.nome} logado com sucesso!', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('E-mail ou senha incorretos.', 'danger')
+            return redirect(url_for('login'))
+    except Exception as e:
+        print(f'Erro: {e}')
+        flash('Erro ao acessar o Banco de dados', 'danger')    
+        return render_template('login.html', titulo = 'Login', form=form)
+        
 
 @app.route('/logout')
 def logout():
