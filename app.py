@@ -3,6 +3,7 @@ from database import db
 from config import SECRET_KEY, iniciar_BD
 from flask_wtf.csrf import CSRFProtect
 from flask_bcrypt import Bcrypt
+from models import ToDo, Usuarios
  
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
