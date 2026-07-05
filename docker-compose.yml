@@ -1,0 +1,25 @@
+services:
+  todo:
+    build: .
+    container_name: todo
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+
+    networks:
+      - proxy
+      - blog_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.todo.rule=Host(`todo.docker.localhost`)"
+      - "traefik.http.routers.todo.entrypoints=websecure"
+      - "traefik.http.routers.todo.tls=true"
+      - "traefik.http.services.todo.loadbalancer.server.port=5000"
+
+networks:
+  blog_default:
+    external: true
+  proxy:
+    external: true 
